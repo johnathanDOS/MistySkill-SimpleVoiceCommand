@@ -31,8 +31,7 @@ For this basic voice command skill, we create a single intent that allows the ag
 Here's how we create the intent for changing Misty's LED:
 
 1. Open the dashboard for your Dialogflow agent. Click **Create Intent**, and give your new intent a name. (Because this intent will handle voice commands for changing Misty's LED color, I called it "ChangeLED")
-2. Next, we need to add training phrases, or examples of utterances an end user might speak that we want to map to the ChangeLED intent. It's a good practice to provide training phrases that model a variety of ways a user could ask Misty to change her LED.
- From the [Dialogflow documentation](https://cloud.google.com/dialogflow/docs/intents-training-phrases):
+2. Next, we need to add training phrases, or examples of utterances an end user might speak that we want to map to the ChangeLED intent: ![Training phrases](./img/training-phrases.png) It's a good practice to provide training phrases that model a variety of ways a user could ask Misty to change her LED. From the [Dialogflow documentation](https://cloud.google.com/dialogflow/docs/intents-training-phrases):
 
 > "Training phrases are example phrases for what end-users might type or say, referred to as end-user expressions. For each intent, you create many training phrases. When an end-user expression resembles one of these phrases, Dialogflow matches the intent."
 
@@ -44,11 +43,11 @@ When building an agent, you control how data is extracted by annotating parts of
 
 The parameter for each of our ChangeLED training phrases is the color, so we annotate each color word (i.e. "blue") as a color parameter. This allows Dialogflow to recognize the color words as values that speakers will provide when our skill runs on Misty.
 
+![Annotating training phrases](./img/annotate-training-phrases.gif)
+
 **Note:** In Dialogflow, `color` is a [system entity](https://cloud.google.com/dialogflow/docs/entities-system). This means Dialogflow is configured out-of-the-box to interpret the color words your end-users might use in an utterance. Dialogflow provides several system entities for commonly used parameters, the [full list of which you can find in the Dialogflow documentation](https://cloud.google.com/dialogflow/docs/reference/system-entities). When you create more intents to use with your voice command skill, you may need to create your own custom entities, the details of which will depend on the functionality you are implementing.
 
-4. Next, we scroll down to the Actions and Parameters section to configure the parameters for our intent. Fill out the following fields:
-  * **Action name** - A reference name for the action. You can refer to your action by this name in the logic for systems that interact with your Dialogflow agent.
-  * **Value** - A variable that serves as a placeholder for a parameter's value in other parts of your Dialogflow agent. Here, I use `$color`.
+1. Next, we scroll down to the Actions and Parameters section to configure the parameters for our intent. Fill out the **Action name** (a reference name for the action that you can use to refer to your action in the logic for systems that interact with your Dialogflow agent) and **Value** (A variable that serves as a placeholder for a parameter's value in other parts of your Dialogflow agent) fields.
 
 With the Dialogflow agent and Intent created, we're ready to set up a Google cloud function to handle incoming requests from our Misty skill.
 
@@ -59,11 +58,11 @@ Google automatically creates a Google Cloud Project and Service Account to handl
 Follow these steps to set up your cloud function:
 
 1. Open the **settings** page for your Dialogflow agent.
-2. Click the link next to the Project ID to open the Google Cloud console for the project.
-3. Select **Cloud Functions** from the Compute menu in the left navigation. (If you do not already have a Google Cloud Platform account, you may be prompted to create a free trial account.)
+2. Click the link next to the Project ID to open the Google Cloud console for the project. ![Agent Settings](./img/agent-settings.png)
+3. Select **Cloud Functions** from the Compute menu in the left navigation. (If you do not already have a Google Cloud Platform account, you may be prompted to create a free trial account.) ![Cloud function](./img/cloud-function.png)
 4. Click **Create Function**.
 5. Name the function **get-access-token**.
-6. Copy the code below into the **index.js** window:
+6. Copy the below code from the [misty-conversation skill](https://github.com/cameron-gq/misty-conversation/tree/master/google_cloud_function) into the **index.js** editor:
 
 ```js
 const {GoogleAuth} = require('google-auth-library');
@@ -91,7 +90,7 @@ exports.getAccessToken = (req, res) => {
 };
 ```
 
-7. Copy the code below into the package.json window
+7. Copy the below code from the [misty-conversation skill](https://github.com/cameron-gq/misty-conversation/tree/master/google_cloud_function) into the **package.json** editor.
 
 ```json
 {
@@ -103,7 +102,7 @@ exports.getAccessToken = (req, res) => {
 }
 ```
 
-8. Set the **Function to execute** to **getAccessToken**
+8. Set the **Function to execute** to **getAccessToken** ![Create function](./img/create-function.png)
 9. Click **Create**.
 
 ## Updating the VoiceCommand meta file
