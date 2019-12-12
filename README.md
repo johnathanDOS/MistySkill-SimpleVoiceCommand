@@ -4,7 +4,7 @@
 
 The contents of this repository are a modified version of the [misty-conversation](https://github.com/cameron-gq/misty-conversation) skill, which was originally created and shared by [cameron-gq](https://github.com/cameron-gq). This guide, the JavaScript code for the skill, and the code for the Google Cloud function used below all borrow heavily – and in some cases are copied directly – from the original misty-conversation skill.
 
-To run this skill, follow the steps below to set up your own Dialogflow agent. Then, copy the project ID and URL for your agent into your local copy of the `SimpleVoiceCommand.json` meta file.
+To run this skill, follow the steps below to set up your own Dialogflow agent. Then, copy the project ID for your agent and the URL for your cloud function into your local copy of the `SimpleVoiceCommand.json` meta file.
 
 ## Setting Up Dialogflow
 
