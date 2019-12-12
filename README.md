@@ -18,6 +18,7 @@ It doesn't take long to set up a Dialogflow agent:
 
 1. If you don't already have one, [sign up for a free Dialogflow account](https://dialogflow.com/).
 2. When that's done, select **Create Agent**, and give your new agent a name. (I used "MistyVoiceCommand", but you can call your agent whatever you like.) ![create agent](./img/create-agent.png)
+3. Click **Create**.
 
 ### 2. Creating an Intent
 
@@ -34,19 +35,13 @@ Here's how we create the intent for changing Misty's LED:
 
 > "Training phrases are example phrases for what end-users might type or say, referred to as end-user expressions. For each intent, you create many training phrases. When an end-user expression resembles one of these phrases, Dialogflow matches the intent."
 
-3. Annotate the training phrases to highlight the parameter, or the word(s) with the relevant information for this request. From the [Dialogflow documentation](https://cloud.google.com/dialogflow/docs/intents-actions-parameters):
+1. Annotate the training phrases to highlight the parameter, or the word(s) with the relevant information for this request. The parameter for each of our ChangeLED training phrases is the color, so we annotate each color word (i.e. "blue") as a color parameter. This allows Dialogflow to recognize the color words as values that speakers will provide when our skill runs on Misty. ![Annotating training phrases](./img/annotate-training-phrases.gif) From the [Dialogflow documentation](https://cloud.google.com/dialogflow/docs/intents-actions-parameters):
 
 > When an intent is matched at runtime, Dialogflow provides the extracted values from the end-user expression as [parameters](https://cloud.google.com/dialogflow/docs/intents-actions-parameters#params). Each parameter has a type, called the [entity type](https://cloud.google.com/dialogflow/docs/entities-overview), which dictates exactly how the data is extracted. Unlike raw end-user input, parameters are structured data that can easily be used to perform some logic or generate responses.
 
-When building an agent, you control how data is extracted by annotating parts of your training phrases and configuring the associated parameters.
-
-The parameter for each of our ChangeLED training phrases is the color, so we annotate each color word (i.e. "blue") as a color parameter. This allows Dialogflow to recognize the color words as values that speakers will provide when our skill runs on Misty.
-
-![Annotating training phrases](./img/annotate-training-phrases.gif)
-
 **Note:** In Dialogflow, `color` is a [system entity](https://cloud.google.com/dialogflow/docs/entities-system). This means Dialogflow is configured out-of-the-box to interpret the color words your end-users might use in an utterance. Dialogflow provides several system entities for commonly used parameters, the [full list of which you can find in the Dialogflow documentation](https://cloud.google.com/dialogflow/docs/reference/system-entities). When you create more intents to use with your voice command skill, you may need to create your own custom entities, the details of which will depend on the functionality you are implementing.
 
-1. Next, we scroll down to the Actions and Parameters section to configure the parameters for our intent. Fill out the **Action name** (a reference name for the action that you can use to refer to your action in the logic for systems that interact with your Dialogflow agent) and **Value** (A variable that serves as a placeholder for a parameter's value in other parts of your Dialogflow agent) fields.
+4. Next, we scroll down to the **Actions and Parameters** section to configure the parameters for our intent. Fill out the **Action name** (a reference name for the action that you can use to refer to your action in the logic for systems that interact with your Dialogflow agent) and **Value** (A variable that serves as a placeholder for a parameter's value in other parts of your Dialogflow agent) fields.
 
 With the Dialogflow agent and Intent created, we're ready to set up a Google cloud function to handle incoming requests from our Misty skill.
 
