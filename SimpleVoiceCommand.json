@@ -1,0 +1,18 @@
+{
+  "Name": "SimpleVoiceCommand",
+  "UniqueId": "0689e344-9cb9-43ba-814d-6887891b54c8",
+  "Description": "A simple skill for sending voice commands to Misty II!",
+  "StartupRules": [
+    "Manual",
+    "Robot"
+  ],
+  "Language": "javascript",
+  "BroadcastMode": "verbose",
+  "TimeoutInSeconds": 600,
+  "CleanupOnCancel": true,
+  "WriteToLog": false,
+  "Parameters": {
+    "getAccessTokenUrl": "<your-access-token-url>",
+    "projectID": "<your-project-id>"
+  }
+}
