@@ -99,7 +99,7 @@ exports.getAccessToken = (req, res) => {
 8. Set the **Function to execute** to **getAccessToken** ![Create function](./img/create-function.png)
 9. Click **Create**.
 
-## Updating the VoiceCommand meta file
+## Updating the SimpleVoiceCommand meta file
 
 Each JavaScript skill you upload to Misty requires two files:
 
