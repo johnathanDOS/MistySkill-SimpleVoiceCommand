@@ -10,15 +10,14 @@ To run this skill, follow the steps below to set up your own Dialogflow agent. T
 
 ### 1. Creating a Dialogflow Agent
 
-The first step in using Dialogflow with our voice command skill is to create a Dialogflow agent to use with our skill. From [Google's developer documentation](https://cloud.google.com/dialogflow/docs/agents-overview):
+Before we can run this skill, we must create our own Dialogflow agent for Misty to talk to. From [Google's developer documentation](https://cloud.google.com/dialogflow/docs/agents-overview):
 
 > "A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language understanding module that understands the nuances of human language. Dialogflow translates end-user text or audio during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow agent to handle the types of conversations required for your system."
 
 It doesn't take long to set up a Dialogflow agent:
 
 1. If you don't already have one, [sign up for a free Dialogflow account](https://dialogflow.com/).
-2. When that's done, select **Create Agent**, and give your new agent a name. (I used "MistyVoiceCommand", but you can call your agent whatever you like.)
-3. Select **Create a new Google Project** from the dropdown menu on the agent creation page, and click the blue **Create** button.
+2. When that's done, select **Create Agent**, and give your new agent a name. (I used "MistyVoiceCommand", but you can call your agent whatever you like.) ![create agent](./img/create-agent.png)
 
 ### 2. Creating an Intent
 
