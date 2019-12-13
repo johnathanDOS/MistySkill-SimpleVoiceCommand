@@ -53,7 +53,10 @@ Follow these steps to set up your cloud function:
 
 1. Open the **settings** page for your Dialogflow agent.
 2. Click the link next to the Project ID to open the Google Cloud console for the project. ![Agent Settings](./img/agent-settings.png)
-3. Select **Cloud Functions** from the Compute menu in the left navigation. (If you do not already have a Google Cloud Platform account, you may be prompted to create a free trial account.) ![Cloud function](./img/cloud-function.png)
+3. Select **Cloud Functions** from the Compute menu in the left navigation. (If you do not already have a Google Cloud Platform account, you may be prompted to create a free trial account.)
+
+<img src="./img/cloud-function.png" width="300">
+
 4. Click **Create Function**.
 5. Name the function **get-access-token**.
 6. Copy the below code from the [misty-conversation skill](https://github.com/cameron-gq/misty-conversation/tree/master/google_cloud_function) into the **index.js** editor:
@@ -96,7 +99,10 @@ exports.getAccessToken = (req, res) => {
 }
 ```
 
-8. Set the **Function to execute** to **getAccessToken** ![Create function](./img/create-function.png)
+8. Set the **Function to execute** to **getAccessToken**
+
+<img src="./img/create-function.png" width="500">
+
 9. Click **Create**.
 
 ## Updating the SimpleVoiceCommand meta file
